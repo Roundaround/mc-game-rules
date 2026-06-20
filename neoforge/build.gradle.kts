@@ -14,4 +14,7 @@ dependencies {
   libBundle(libs.trove.neoforge.core)
   libBundle(libs.trove.gui)
   libBundle(libs.trove.network)
+
+  gametestImplementation(platform(libs.trove.bom))
+  gametestImplementation(libs.trove.neoforge.gametest)
 }

@@ -65,7 +65,7 @@ public class GameRuleScreen extends Screen {
             return;
           }
 
-          this.minecraft.setScreen(new ConfirmScreen(
+          this.minecraft.gui.setScreen(new ConfirmScreen(
               this::onConfirmChoice,
               Component.translatable("gamerulesmod.confirm.title"),
               this.generateConfirmText()
@@ -103,7 +103,7 @@ public class GameRuleScreen extends Screen {
       this.list.close();
     }
     if (this.minecraft != null) {
-      this.minecraft.setScreen(this.parent);
+      this.minecraft.gui.setScreen(this.parent);
     }
   }
 
@@ -122,7 +122,7 @@ public class GameRuleScreen extends Screen {
       this.onClose();
     } else {
       assert this.minecraft != null;
-      this.minecraft.setScreen(this);
+      this.minecraft.gui.setScreen(this);
     }
   }
 

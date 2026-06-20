@@ -26,7 +26,7 @@ import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.components.CycleButton;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.LoadingDotsText;
-import net.minecraft.client.resources.language.I18n;
+import net.minecraft.locale.Language;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.util.CommonColors;
@@ -389,7 +389,7 @@ public class GameRuleListWidget extends ParentElementEntryListWidget<GameRuleLis
 
     private static Optional<Component> getDescription(GameRule<?> rule) {
       String descriptionI18nKey = rule.getDescriptionId() + ".description";
-      if (I18n.exists(descriptionI18nKey)) {
+      if (Language.getInstance().has(descriptionI18nKey)) {
         return Optional.of(Component.translatable(descriptionI18nKey));
       }
       return Optional.empty();

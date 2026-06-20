@@ -11,6 +11,12 @@ allay {
   repository.set("https://github.com/Roundaround/mc-game-rules")
   issues.set("https://github.com/Roundaround/mc-game-rules/issues")
 
+  gametest {
+    // Acknowledge the Minecraft EULA for the throwaway worlds the headless
+    // server game test spins up.
+    eula.set(true)
+  }
+
   modrinth {
     projectId.set("game-rules")
   }
@@ -21,6 +27,7 @@ allay {
 
   release {
     versionType.set("release")
-    sourcesJar.set(true)
+    minecraftVersions("26.2")
+    changelogDir.set(file("changelogs"))
   }
 }

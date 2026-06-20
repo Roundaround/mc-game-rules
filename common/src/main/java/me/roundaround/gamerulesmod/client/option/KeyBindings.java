@@ -21,7 +21,7 @@ public final class KeyBindings {
     ClientLifecycle.onTick(() -> {
       Minecraft client = Minecraft.getInstance();
       while (openEditScreen.consumeClick()) {
-        client.setScreen(new GameRuleScreen(client.screen));
+        client.gui.setScreen(new GameRuleScreen(client.gui.screen()));
       }
     });
   }

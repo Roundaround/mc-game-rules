@@ -22,4 +22,7 @@ dependencies {
   libBundle(libs.trove.fabric.core)
   libBundle(libs.trove.gui)
   libBundle(libs.trove.network)
+
+  gametestImplementation(platform(libs.trove.bom))
+  gametestImplementation(libs.trove.fabric.gametest)
 }
