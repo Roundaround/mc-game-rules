@@ -5,7 +5,6 @@ import me.roundaround.gamerulesmod.client.gui.screen.GameRuleScreen;
 import me.roundaround.trove.event.ClientLifecycle;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
-import org.lwjgl.glfw.GLFW;
 
 public final class KeyBindings {
   public static KeyMapping openEditScreen;
@@ -13,8 +12,8 @@ public final class KeyBindings {
   public static void register() {
     openEditScreen = me.roundaround.trove.client.KeyBindings.register(new KeyMapping(
         "gamerulesmod.key.openEditScreen",
-        InputConstants.Type.KEYSYM,
-        GLFW.GLFW_KEY_UNKNOWN,
+        InputConstants.Type.KEYBOARD,
+        InputConstants.UNKNOWN.getValue(),
         KeyMapping.Category.MISC
     ));
 
