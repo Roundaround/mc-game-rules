@@ -1,27 +1,37 @@
 ![Game Rules](https://imgur.com/yaCr6O5.png)
 
-![](https://img.shields.io/badge/Loader-Fabric%20|%20Forge%20|%20NeoForge-313e51?style=for-the-badge)
-![](https://img.shields.io/badge/MC-26.3%20|%2026.2%20|%2026.1%20|%201.21-313e51?style=for-the-badge)
-![](https://img.shields.io/badge/Side-Client%20&%20Server-313e51?style=for-the-badge)
-
 [![Modrinth Downloads](https://img.shields.io/modrinth/dt/game-rules?style=flat&logo=modrinth&color=00AF5C)](https://modrinth.com/mod/game-rules)
 [![CurseForge Downloads](https://img.shields.io/curseforge/dt/1292156?style=flat&logo=curseforge&color=F16436)](https://www.curseforge.com/minecraft/mc-mods/game-rules)
 [![GitHub Repo stars](https://img.shields.io/github/stars/Roundaround/mc-game-rules?style=flat&logo=github)](https://github.com/Roundaround/mc-game-rules)
 
 [![Support me on Ko-fi](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/compact/donate/kofi-singular-alt_vector.svg)](https://ko-fi.com/roundaround)
 
----
+Edit any game rule in an existing world without enabling cheats, from Mod Menu or a keybinding.
 
-Modify game rules in your existing worlds, all without enabling cheats/commands! Open the game rule edit screen through Mod Menu or with the special keybinding created for the mod (by default not bound to any key).
+## Installing
 
-![Edit Game Rules screen](https://cdn.modrinth.com/data/cached_images/955659465c109c318cd5d31615ec317d05d02b26_0.webp)
+Grab a build from [Modrinth](https://modrinth.com/mod/game-rules) or [CurseForge](https://www.curseforge.com/minecraft/mc-mods/game-rules). Fabric builds need [Fabric API](https://modrinth.com/mod/fabric-api).
 
-Every game rule in your world is available to edit. For multiplayer servers, editing game rules through the mod requires OP permissions.
+## Building from source
 
-An extra restriction exists for hardcore worlds - game rules in hardcore worlds can only be changed once! This was added as a balancing mechanism to allow long-running hardcore worlds to change settings like vine spreading (which may not have been an option years ago at world creation) without feeling too cheaty. The mod will show you the changed date and the exact time and date you changed each of the rules in your world, so that other folks might be able to hold you accountable!
+```sh
+./gradlew build
+```
 
-The rules and behavior are still under evaluation (especially in relation to multiplayer servers), so if you have any thoughts or questions, feel free to open an issue on the mod's GitHub repo ([https://github.com/Roundaround/mc-fabric-game-rules/issues](https://github.com/Roundaround/mc-fabric-game-rules/issues)).
+Dev runs are per loader: `:fabric:runClient`, `:neoforge:runClient`, `:forge:runClient`, and the `runServer` equivalents. Game tests run with `./gradlew :fabric:runClientGameTests` and `:fabric:runServerGameTests`.
 
-## A note on older versions
+The build is an [Allay](https://github.com/Roundaround/allay) consumer and bundles [Trove](https://github.com/Roundaround/trove).
 
-Game rules have evolved over time, so earlier versions of this mod may look or behave a bit differently. Previous versions also included multiple variants that caused some rules to be immutable; variants have since been cut for simplicity, so every game rule is now editable.
+Shared code lives in `common/` and is added to each loader subproject via `srcDir`.
+
+## Contributing
+
+Issues and pull requests are welcome at [the issue tracker](https://github.com/Roundaround/mc-game-rules/issues).
+
+- Branch from `main`, which tracks the newest supported Minecraft version. Older lines live on their own version-named branches.
+- Keep loader-agnostic code in `common/`; only genuinely loader-specific glue belongs in a loader subproject.
+- Run `./gradlew build` plus the Fabric game tests before opening a PR, and add a changelog entry under `changelogs/` named for the version you're targeting.
+
+## License
+
+[MIT](LICENSE)
