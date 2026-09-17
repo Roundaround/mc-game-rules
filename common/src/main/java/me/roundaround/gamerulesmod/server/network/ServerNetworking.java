@@ -69,14 +69,14 @@ public final class ServerNetworking {
     };
 
     payload.values().forEach((id, either) -> {
+      Either<Boolean, Integer> previousValue = RuleHelper.getValue(gameRules, id);
+      if (previousValue == null || previousValue.left().isPresent() != either.left().isPresent()) {
+        // Unknown rule id or a value of the wrong type (a malformed packet); skip so the history
+        // never records a change that didn't happen.
+        return;
+      }
       if (!mutableRules.contains(id)) {
         warnCount.value++;
-      }
-
-      Either<Boolean, Integer> previousValue = RuleHelper.getValue(gameRules, id);
-      if (previousValue == null) {
-        // Unknown or unregistered rule id (e.g. from a malformed packet); skip so we never
-        // store a null value into the history, which the value codec cannot serialize.
         return;
       }
       RuleHelper.setValue(gameRules, id, either);
